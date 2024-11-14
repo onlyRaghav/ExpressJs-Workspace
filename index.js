@@ -14,7 +14,20 @@ app.use('/',router);
 // })
 
 
+// Dynamic Url buliding and accessing its parameters
+app.get("/:id",(req,res)=>{
+    res.send("Your requested id is: " + req.params.id);
+})
+
+app.get("/:id/:name",(req,res)=>{
+    res.send("id: " + req.params.id + " Name: " + req.params.name);
+})
+
+// this will execute when the above stated route doesn't match
+app.get("*",(req,res)=>{
+    res.send("This is an invalid url");
+})
 
 app.listen(5000);
 
-console.log("The server is running on port 5000");
+console.log(`App is working on http://localhost:5000`);
